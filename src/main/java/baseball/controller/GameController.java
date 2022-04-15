@@ -24,7 +24,7 @@ public class GameController {
             validInput(input);
             return input.equals(KEEP);
         } catch (IllegalArgumentException e) {
-            Output.printError();
+            Output.printGameError();
             return keepPlayGame();
         }
     }
