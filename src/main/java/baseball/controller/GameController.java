@@ -3,7 +3,6 @@ package baseball.controller;
 import baseball.service.BaseballService;
 import baseball.ui.Input;
 import baseball.ui.Output;
-import camp.nextstep.edu.missionutils.Console;
 
 public class GameController {
 
