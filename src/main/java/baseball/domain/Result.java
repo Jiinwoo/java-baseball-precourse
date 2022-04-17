@@ -1,5 +1,8 @@
 package baseball.domain;
 
+/**
+ * ui 영역..? DTO 인가
+ */
 public class Result {
     public static final int ZERO = 0;
     public static final String RESULT_NOTHING_MESSAGE = "낫싱";
