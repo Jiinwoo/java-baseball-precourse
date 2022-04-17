@@ -59,9 +59,14 @@ public class BaseballList {
     public int countStrike(BaseballList cmpBaseballList) {
         int cnt = 0;
         for (int i = 0; i < this.baseBallList.size(); i++) {
-            if(this.baseBallList.get(i).equals(cmpBaseballList.baseBallList.get(i))) {
-                cnt++;
-            }
+            cnt = addOneIfSamePositionAndSameValue(cmpBaseballList, cnt, i);
+        }
+        return cnt;
+    }
+
+    private int addOneIfSamePositionAndSameValue(BaseballList cmpBaseballList, int cnt, int i) {
+        if(isSamePositionAndSameValue(i, cmpBaseballList)) {
+            cnt++;
         }
         return cnt;
     }
@@ -69,14 +74,23 @@ public class BaseballList {
     public int countBall(BaseballList cmpBaseballList) {
         int cnt = 0;
         for (int i = 0; i < this.baseBallList.size(); i++) {
-            if (this.baseBallList.get(i).equals(cmpBaseballList.baseBallList.get(i))) {
-                continue;
-            }
-            if (cmpBaseballList.contains(this.baseBallList.get(i))){
-                cnt++;
-            }
+            cnt = addOneIfContainsAndNotSamePosition(cmpBaseballList, cnt, i);
         }
         return cnt;
+    }
+
+    private int addOneIfContainsAndNotSamePosition(BaseballList cmpBaseballList, int cnt, int i) {
+        if (cmpBaseballList.contains(this.baseBallList.get(i))){
+            cnt++;
+        }
+        if (this.baseBallList.get(i).equals(cmpBaseballList.baseBallList.get(i))) {
+            cnt--;
+        }
+        return cnt;
+    }
+
+    private boolean isSamePositionAndSameValue(int i, BaseballList cmpBaseballList) {
+        return this.baseBallList.get(i).equals(cmpBaseballList.baseBallList.get(i));
     }
 
 
