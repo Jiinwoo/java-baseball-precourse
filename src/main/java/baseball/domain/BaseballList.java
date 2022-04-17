@@ -30,7 +30,7 @@ public class BaseballList {
     public static BaseballList createBaseBallList () {
         List<Baseball> computedBallList = new ArrayList<>();
         while (computedBallList.size() != VALID_BASEBALL_SIZE) {
-            Baseball pickedBaseball = new Baseball(Randoms.pickNumberInRange(0, 9));
+            Baseball pickedBaseball = new Baseball(Randoms.pickNumberInRange(1, 9));
             if(!computedBallList.contains(pickedBaseball)){
                 computedBallList.add(pickedBaseball);
             }
