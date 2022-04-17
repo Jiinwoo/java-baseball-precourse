@@ -1,18 +1,14 @@
 package baseball.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
-import org.mockito.Mockito;
 
-import java.util.Arrays;
-
-import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.mockStatic;
-import static org.mockito.Mockito.when;
 
 class BaseballListTest {
 
@@ -63,6 +59,7 @@ class BaseballListTest {
         int countStrike = computedBaseballList.countStrike(userBaseballList);
         //then
         assertThat(countStrike).isEqualTo(3);
+        mock.close();
     }
 
     @Test
@@ -76,6 +73,7 @@ class BaseballListTest {
         int countBall = computedBaseballList.countBall(userBaseballList);
         //then
         assertThat(countBall).isEqualTo(2);
+        mock.close();
     }
 
 }
