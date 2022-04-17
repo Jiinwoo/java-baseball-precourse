@@ -14,8 +14,8 @@ public class BaseballList {
     private final List<Baseball> baseBallList;
 
     private BaseballList(List<Baseball> baseBallList) {
-        isValid();
         this.baseBallList = baseBallList;
+        isValid();
     }
 
     public static BaseballList createBaseBallList (String input) {
@@ -29,7 +29,7 @@ public class BaseballList {
 
     public static BaseballList createBaseBallList () {
         List<Baseball> computedBallList = new ArrayList<>();
-        for (Integer integer : Randoms.pickUniqueNumbersInRange(0, 10, 10)) {
+        for (Integer integer : Randoms.pickUniqueNumbersInRange(0, 9, 3)) {
             computedBallList.add(new Baseball(integer));
         }
         return new BaseballList(computedBallList);
@@ -53,5 +53,31 @@ public class BaseballList {
     }
 
 
+    public int countStrike(BaseballList cmpBaseballList) {
+        int cnt = 0;
+        for (int i = 0; i < this.baseBallList.size(); i++) {
+            if(this.baseBallList.get(i).equals(cmpBaseballList.baseBallList.get(i))) {
+                cnt++;
+            }
+        }
+        return cnt;
+    }
 
+    public int countBall(BaseballList cmpBaseballList) {
+        int cnt = 0;
+        for (int i = 0; i < this.baseBallList.size(); i++) {
+            if (this.baseBallList.get(i).equals(cmpBaseballList.baseBallList.get(i))) {
+                continue;
+            }
+            if (cmpBaseballList.contains(this.baseBallList.get(i))){
+                cnt++;
+            }
+        }
+        return cnt;
+    }
+
+
+    private boolean contains (Baseball cmpBaseball) {
+        return this.baseBallList.contains(cmpBaseball);
+    }
 }

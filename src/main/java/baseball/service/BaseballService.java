@@ -2,17 +2,24 @@ package baseball.service;
 
 import baseball.domain.BaseballList;
 import baseball.domain.Computer;
+import baseball.domain.Result;
 import baseball.ui.Input;
 import baseball.ui.Output;
 
 public class BaseballService {
+
+    public static final int CORRECT_NUMBER = 3;
+    private Result result;
 
     public void play() {
         Computer computer = new Computer();
         computer.initBallList();
         do {
             BaseballList userBaseballList = receiveInput();
-        } while (isCorrectAnswer());
+            this.result = computer.judge(userBaseballList);
+            Output.printResult(this.result.toString());
+        } while (!isCorrectAnswer());
+        Output.printBaseballEnd();
     }
 
     private BaseballList receiveInput() {
@@ -25,6 +32,6 @@ public class BaseballService {
     }
 
     private boolean isCorrectAnswer(){
-        return true; // TODO
+        return result.getStrikeCount() == CORRECT_NUMBER;
     }
 }
