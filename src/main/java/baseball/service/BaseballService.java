@@ -27,7 +27,7 @@ public class BaseballService {
             return BaseballList.createBaseBallList(Input.receiveInput());
         } catch (IllegalArgumentException e) {
             Output.printError(e.getMessage());
-            return receiveInput();
+            throw new IllegalArgumentException(e.getMessage());
         }
     }
 
