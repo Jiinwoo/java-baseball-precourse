@@ -11,6 +11,7 @@ public class Computer {
     }
 
     public Result judge (BaseballList userBaseballList) {
+        assert(baseballList != null);
 
         int countStrike = userBaseballList.countStrike(baseballList);
         int countBall = userBaseballList.countBall(baseballList);
