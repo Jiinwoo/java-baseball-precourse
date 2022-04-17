@@ -29,8 +29,11 @@ public class BaseballList {
 
     public static BaseballList createBaseBallList () {
         List<Baseball> computedBallList = new ArrayList<>();
-        for (Integer integer : Randoms.pickUniqueNumbersInRange(0, 9, 3)) {
-            computedBallList.add(new Baseball(integer));
+        while (computedBallList.size() != VALID_BASEBALL_SIZE) {
+            Baseball pickedBaseball = new Baseball(Randoms.pickNumberInRange(0, 9));
+            if(!computedBallList.contains(pickedBaseball)){
+                computedBallList.add(pickedBaseball);
+            }
         }
         return new BaseballList(computedBallList);
     }
